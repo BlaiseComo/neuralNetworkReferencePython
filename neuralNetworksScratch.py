@@ -3,7 +3,7 @@
 
 import sys
 import numpy as np
-import matplotlib
+from matplotlib import pyplot as plt
 
 # Below code simulates 3 neurons (hence 3 sets of weights and biases) with 4 inputs, each output neuron has there own set of weights, but each input neuron can have 3 connections 
 # coming from it, each with it's own unique weight (depends on output neuron it connects to)
@@ -69,4 +69,17 @@ weights = [[0.2, 0.8, -0.5, 1.0], [0.5, -0.91, 0.26, -0.5], [-0.26, -0.27, 0.17,
 biases = [2, 3, 0.5]
 
 output = np.dot(weights, inputs) + biases # Very important that weights are the first argument
-print(type(output))
+
+
+# Batches Below:
+# This is essentially the same as the above code except for the fact that the output will have to take in more than one batch of inputs
+
+inputs = [[1,2,3,2.5], [2.0,5.0,-1.0,2.0], [-1.5,2.7,3.3,-0.8]]
+
+weights = [[0.2, 0.8, -0.5, 1.0], [0.5, -0.91, 0.26, -0.5], [-0.26, -0.27, 0.17, 0.87]]
+
+biases = [2, 3, 0.5]
+
+# Weights is converted to a numpy array and then transposed (the rows become columns and columns become rows)
+output = np.dot(inputs, np.array(weights).T) + biases
+
